@@ -995,6 +995,11 @@ try {
             textView2.setText("");
             onayla.setVisibility(View.VISIBLE);
             if (ilerle.getText().toString() == "Başla") {
+                if(seviye==0){
+                    scroll.setVisibility(View.INVISIBLE);
+                    textView4.setVisibility(View.VISIBLE);
+                    ezkel.setVisibility(View.VISIBLE);
+                }
                 ilerle.setText("İlerle");
                 editText.setHint("Cevabınız...");
                 editText.setVisibility(View.VISIBLE);
@@ -1171,13 +1176,19 @@ try {
     }
 
     public void ezberle(View view) {
+        textView4.setVisibility(View.INVISIBLE);
+        geri.setVisibility(View.VISIBLE);
+        ilerle.setVisibility(View.VISIBLE);
+        ezkel.setVisibility(View.INVISIBLE);
+
+
+
         seviye = 0;
         editText.setHint("");
         textView.setVisibility(View.INVISIBLE);
         editText.setVisibility(View.INVISIBLE);
         onayla.setVisibility(View.VISIBLE);
-        sorkel.setVisibility(View.VISIBLE);
-        ilerle.setVisibility(View.VISIBLE);
+        sorkel.setVisibility(View.INVISIBLE);
         textView2.setVisibility(View.INVISIBLE);
         seviye2.setVisibility(View.INVISIBLE);
         textView2.setText("");
@@ -1185,14 +1196,20 @@ try {
         seviye4.setVisibility(View.INVISIBLE);
         ezberle.setVisibility(View.INVISIBLE);
         seviye1.setVisibility(View.INVISIBLE);
-        ezkel.setVisibility(View.VISIBLE);
-        geri.setVisibility(View.VISIBLE);
-        textView4.setVisibility(View.VISIBLE);
         sdiziyenile();
         onayla.setVisibility(View.INVISIBLE);
         ilerle.setText("Başla");
         textView.setText("");
         textView4.setText("Skor: "+sayac);
+        scroll.setVisibility(View.VISIBLE);
+        String h = "";
+        for (int i = 0; i < sdizi.length; i++) {
+            String a = sdizi[i][0].toString();
+            String b = sdizi[i][1].toString();
+            String k = a + " --> " + b + "\n";
+            h = h + k;
+        }
+        textView3.setText(h);
     }
     public void ezkel(View view) {//tıklandığında tüm kelimeleri ekranda gösterir.
         int k0=0,k1=0,k2=0,k3=0,k4=0;
@@ -1353,6 +1370,8 @@ try {
             gortut=0;
         }
 if(seviye==0) {
+
+    ilerle.setVisibility(View.VISIBLE);
     String h = "";
     for (int i = 0; i < sdizi.length; i++) {
         String a = sdizi[i][0].toString();
@@ -1377,13 +1396,12 @@ if(seviye==1||seviye==2||seviye==3){
         textView.setVisibility(View.INVISIBLE);
         editText.setVisibility(View.INVISIBLE);
         onayla.setVisibility(View.INVISIBLE);
-        ilerle.setVisibility(View.INVISIBLE);
         ezberle.setVisibility(View.INVISIBLE);
         seviye1.setVisibility(View.INVISIBLE);
         ezkel.setVisibility(View.INVISIBLE);
         textView2.setVisibility(View.INVISIBLE);
-        geri.setVisibility(View.INVISIBLE);
-        geri1.setVisibility(View.VISIBLE);
+        geri.setVisibility(View.VISIBLE);
+        geri1.setVisibility(View.INVISIBLE);
         textView4.setVisibility(View.INVISIBLE);
         imageView.setVisibility(View.INVISIBLE);
         imageView2.setVisibility(View.INVISIBLE);
@@ -1395,6 +1413,7 @@ if(seviye==1||seviye==2||seviye==3){
     }
     public void geri(View view) {
         sayac=0;
+        scroll.setVisibility(View.INVISIBLE);
         textView2.setVisibility(View.INVISIBLE);
         ezberle.setVisibility(View.VISIBLE);
         seviye1.setVisibility(View.VISIBLE);
@@ -1435,7 +1454,12 @@ if(seviye==1||seviye==2||seviye==3){
         ezkel.setVisibility(View.VISIBLE);
         geri1.setVisibility(View.INVISIBLE);
         geri.setVisibility(View.VISIBLE);
-        sorkel.setVisibility(View.VISIBLE);
+        if(seviye==0){
+            sorkel.setVisibility(View.INVISIBLE);
+        }else{
+            sorkel.setVisibility(View.VISIBLE);
+        }
+
         if(seviye==1){
             if(ilerle.getText().toString()!="Başla") {
                 if(deneme==0) {
